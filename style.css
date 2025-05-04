@@ -1,0 +1,15 @@
+/* ChatGPT boilerplate, revamp properly like a HUMAN BEING later */
+
+body {
+    background-color: #f4f1de;
+    background-image: radial-gradient(circle, #f4f1de, #e9e4d8, #dcd7c9);
+    font-family: 'Chalkboard', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
