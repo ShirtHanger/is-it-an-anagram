@@ -1,0 +1,20 @@
+/* Lists for unique feedback, make new file for this later */
+
+const yesAnAnagram = [
+    "Yes, this is an", "Heck yeah!", "yep, it's an", 
+    "sure it's an", "indeed", "We found another"
+]
+
+const notAnAnagram = [
+    "No, this isn't an", "Nah this ain't an", "Nope, not an", "Not really an", "Not at all an", 
+    "Never could be considered an", "Absolutely not an", "These are definitely not an", "In what universe is this"
+]
+
+const introMessageList = [
+    "Electric boogaloo!", "The Empire Strikes Back!", "Word = Drow", "Anagram Z", 
+    "Anagram Z Kai", "Anagram Super", "Anagram Shippuden", "Reign of The Anagrams", 
+    "Age of the Anagrams", "Part 2", "Remastered", "Go Beyond! Plus Ultra!", "Brotherhood",
+    'Mighty Morphin Word Force', "Roll out!", "Endgame", "Spider-Man 2"
+]
+
+export { yesAnAnagram, notAnAnagram, introMessageList }

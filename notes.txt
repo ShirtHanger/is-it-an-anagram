@@ -1,0 +1,7 @@
+/* Catagories for Stands 4
+ana = Anagram
+Rhymes
+Literature = Books
+defs = Definitions */
+
+let stands4BaseDrill = `https://www.stands4.com/services/v2/${catagory}.php?uid=${userID}&tokenid=${tokenID}&term=${testWord}&format=json`
