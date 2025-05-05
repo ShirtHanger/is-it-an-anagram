@@ -1,12 +1,11 @@
-import { tokenID, userID, testWord } from './constant.js'
+
+import * as tokens from './constant.js'
 
 import { 
-    freeDictionaryAPIDrill, oxfordDrill, apiNinjaDrill, merriumWebsterDrill, 
-    anagramicaDrill, stands4AnagramDrill, stands4DefinitionsDrill, 
-    stands4RhymeDrill, stands4LiteratureDrill,
+    stands4BaseLink
  } from './links.js'
 
- import { yesAnAnagram, notAnAnagram, introMessageList } from './messages.js'
+import * as messages from './messages.js'
 
 /* HTML Elements */
 
@@ -20,19 +19,21 @@ const displayWordTwo = document.getElementById("display-word-2")
 
 const axiosInput = document.getElementById("axios-input")
 const axiosButton = document.getElementById("axios-button")
+const axiosCategory = document.getElementById("axios-category")
 
 
 
 
-displayIntroMessage.textContent = introMessageList[randNum(introMessageList.length)]
+displayIntroMessage.textContent = messages.intro[randNum(messages.intro.length)]
 
 /* AXIOS test calls */
 
 axiosButton.addEventListener("click", async () => {
 
     let debugWord = axiosInput.value.trim()
+    let debugCatagory = axiosCategory.value.trim()
 
-    let testRes = await getWordStands4('defs', userID, tokenID, debugWord)
+    let testRes = await getWordStands4(debugCatagory, tokens.userID, tokens.tokenID, debugWord)
     console.log(testRes)
 
 })
@@ -53,7 +54,7 @@ checkButton.addEventListener("click", function () {
     wordTwoSorted = splitAndSort(wordTwo)
     isAnagram = checkAnagram(wordOneSorted, wordTwoSorted)
 
-    resultDisplay.textContent = isAnagram ? `${yesAnAnagram[randNum(yesAnAnagram.length)]} anagram.` : `${notAnAnagram[randNum(notAnAnagram.length)]} anagram.`
+    resultDisplay.textContent = isAnagram ? `${positive[randNum(positive.length)]} anagram.` : `${messages.anagram.negative[randNum(messages.anagram.negative.length)]} anagram.`
 })
 
 /* Functions */
@@ -85,7 +86,8 @@ async function getWordFromDictionary(drill, word) {
 }
 
 async function getWordStands4(catagory, userID, tokenID, word) {
-    let response = await axios.get(`https://www.stands4.com/services/v2/${catagory.toLowerCase()}.php?uid=${userID}&tokenid=${tokenID}&term=${word.toLowerCase()}&format=json`)
+    let link = stands4BaseLink + catagory.toLowerCase() + '.php'
+    let response = await axios.get(`${link}?uid=${userID}&tokenid=${tokenID}&term=${word.toLowerCase()}&format=json`)
     return response.data
 }
 
